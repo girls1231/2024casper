@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>캐스퍼 시승신청</title>
+  <!-- 초기화 --><link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <!-- 기본서식 --><link rel="stylesheet" type="text/css" href="./css/base.css">
+  <!-- 공통서식(헤더푸터) --> <link rel="stylesheet" type="text/css" href="./css/common.css">
+  <!-- 메인서식 --> <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <!--아이콘폰트--> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css" >
+  <!-- 스와이퍼 -->  <link rel="stylesheet" type="text/css" href="./css/swiper.css">
+  <!-- 파비콘 --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- 서브페이지 서식 -->
+<style>
+  header{position: static; /*포지션 해제*/}
+  header .gnb ul li a, header i.fas{color: var(--f_color1) !important;}
+
+  .sub_top{background-image: url(./images/bg-main-test-driving.125a037.jpg);height: 300px;}
+  .sub_top nav{color: white; }
+
+  fieldset{background-color: #eee;}
+  .online_reseve{}
+  
+</style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <!-- 로고 -->
+    <h1>
+      <a href="index.html" title="홈으로 바로가기">
+      <img src="./images/logo-casper_black.png" alt="캐스퍼 로고">
+      </a>
+    </h1>
+
+  <!-- 네비게이션 -->
+  <nav class="gnb">
+    <ul>
+      <li><a href="#" title="소개">소개</a></li>
+      <li><a href="#" title="체험">체험</a></li>
+      <li><a href="#" title="이벤트">이벤트</a></li>
+      <li><a href="#" title="구매">구매</a></li>
+      <li><a href="#" title="고객지원">고객지원</a></li>
+    </ul>
+  </nav>
+
+  <!-- 아이콘 -->
+  <a href="./casper_login.html" title="로그인 화면으로 가기"><i class="fas fa-user" title="로그인/회원가입"></i></a>
+  <a href="#" title="로그인 화면으로 가기"><i class="fas fa-bell" title="알람"></i></a>
+  </header>
+
+  <!-- 원형네비게이션 -->
+  <nav id="m_navi">
+    <ul>
+      <li><span>1</span><a href="#" title="소개">소개</a></li>
+      <li><span>2</span><a href="#" title="체험">체험</a></li>
+      <li><span>3</span><a href="#" title="이벤트">이벤트</a></li>
+      <li><span>4</span><a href="#" title="구매">구매</a></li>
+      <li><span>5</span><a href="#" title="고객지원">고객지원</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!--sub top-->
+    <section class="sub_top">
+      <nav>홈 &gt; 체험 &gt; <b>시승신청<b></nav>
+      <h2>시승신청</h2>
+      <p>캐스퍼가 제공하는 편리한 시승 서비스를 이용해보세요</p>
+    </section>
+
+    <!-- 시승신청 온라인 예약 -->
+    <section class="online_reseve">
+      <h2 class="sec_title2">시승 신청 온라인 예약</h2>
+      <form action="db_insert.php" name="시승신청" method="post">
+        <fieldset>
+          <legend>시승신청 온라인 예약</legend>
+          <p><label>고객명 : </label><input type="text" name="name" required></p>
+          <p><label>휴대폰 : </label><input type="text" name="phone" required></p>
+          <p>SMS수신여부 : 
+            <label for="sms01">수신</label>
+            <input type="radio" name="sms" id="sms01" value="Y">
+            <label for="sms01">수신안함</label>
+            <input type="radio" name="sms" id="sms02" value="N"></p>
+          <p>
+            <label>전시장 선택 : </label>
+            <select name="region" id="region" required>
+              <option value="">전시장 선택</option>
+              <option value="강남점">강남점</option>
+              <option value="한남점">한남점</option>
+              <option value="송파점">송파점</option>
+            </select>
+          </p>
+          <p>
+            <label>차량 선택 : </label>
+            <select name="car" id="car" required>
+              <option value="">차량 선택</option>
+              <option value="캐스퍼">캐스퍼</option>
+              <option value="캐스퍼 인스퍼레이션">캐스퍼 인스퍼레이션</option>
+              <option value="소나타">소나타</option>
+              <option value="그랜져">그랜져</option>
+              <option value="캐스퍼">제네시스</option>
+            </select>
+          </p>
+          <p><label>보유차종 : </label><input type="text" name="my_car" required></p>
+          <p><label>시승희망일 : </label><input type="text" name="e_date" required></p>
+          <p><input type="submit" value="예약하기"></p>
+          <p><input type="reset" value="취소하기"></p>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="f_inner">
+      <h2>
+        <a href="casper_index.html" title="메인페이지로 바로가기">
+          <img src="./images/logo-hyundai.a9ebdc6.png" alt="하단 로고">
+        </a>
+      </h2>
+      <nav class="f_lnb">
+        <ul>
+          <li><a href="#" title="이용약관">이용약관</a></li>
+          <li><a href="#" title="개인정보 처리방침">개인정보 처리방침</a></li>
+          <li><a href="#" title="저작권안내">저작권안내</a></li>
+          <li><a href="#" title="공등인증서 안내">공등인증서 안내</a></li>
+          <li><a href="#" title="현대자동차 홈페이지">현대자동차 홈페이지</a></li>
+        </ul>
+      </nav>
+      <address>
+        <dl>
+          <dt>사업자 등록번호 : </dt>
+          <dd>010-000-00000</dd>
+          <dt>통신판매업신고번호</dt>
+          <dd>2022-012345</dd>
+          <dt>대표이사 : </dt>
+          <dd>장재훈</dd>
+          <dt>주소 : </dt>
+          <dd>서울시 서초구 헌흥로 12</dd>
+          <dt>호스팅 서비스 제공 : </dt>
+          <dd>현재오토에버(주)</dd>
+        </dl>
+        <p>COPYRIGHT &copy; 2023 HYUNDAI MOTOR COMPANY, ALL RIGHTS RESERVED.</p>
+      </address>
+    </div>
+  </footer>
+
+  <!-- cookie --> <script src="./script/jquery.cookie.js"></script>
+  <!-- swiper --> <script src="./script/swiper.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      let modal = 
+      ` <!-- 모달창 -->
+        <div class="modal">
+          <div class="modal_inner">
+            <a href="" title="">
+              <img src="./images/modal_img.jpg" alt="캐스퍼 주유비 1년간 할인 배너">
+            </a>
+            <p>
+              <input type="checkbox" id="today_close"><label for="today_close" class="today_close_label">일주일 동안 열지 않음</label>
+              <input type="button" id="close" value="닫기">
+            </p>
+          </div>
+        </div>`;
+
+      $('body').append(modal); 
+      let today_close = $('#today_close'); 
+      if($.cookie('popup')=='none'){$('.modal').hide();}; 
+
+      function close_popup(){ 
+        if(today_close.is(':checked')){ 
+          $.cookie('popup','none',{expires:7,path:'/'})
+          $('.modal').hide();
+        }else{
+          $('.modal').hide(); 
+        };};
+
+      $('#close, #today_close').click(function(){close_popup();}); 
+
+      var swiper = new Swiper('.top3',{
+      autoplay:{
+        delay:3000,
+        disableOnInteraction: false,
+      },
+      loop:true, 
+      navigation:{
+        nextEl:".top3 .swiper-button-next",
+        prevEl:".top3 .swiper-button-prev",
+      },
+      pagination:{
+        el:'.swiper-pagination',
+        clickable:true, //컨트롤 버튼 클릭 가능하게
+      }      
+    });
+
+    var swiper2 = new Swiper('.event',{
+      autoplay:{
+        delay:3000,
+        disableOnInteraction: false,
+      },
+      loop:true, 
+      navigation:{
+        nextEl:".event .swiper-button-next",
+        prevEl:".event .swiper-button-prev",
+      },
+      pagination:{
+        el:'.event .swiper-pagination',
+        clickable:true, //컨트롤 버튼 클릭 가능하게
+      }
+    });
+
+
+    });
+
+  </script>
+</body>
+</html>

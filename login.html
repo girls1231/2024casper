@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>캐스퍼 로그인</title>
+  <!-- 초기화 --><link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <!-- 기본서식 --><link rel="stylesheet" type="text/css" href="./css/base.css">
+  <!-- 공통서식(헤더푸터) --> <link rel="stylesheet" type="text/css" href="./css/common.css">
+  <!-- 메인서식 --> <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <!--아이콘폰트--> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css" >
+  <!-- 스와이퍼 -->  <link rel="stylesheet" type="text/css" href="./css/swiper.css">
+  <!-- 파비콘 --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- 서브페이지 서식 -->
+<style>
+  header{position: static; /*포지션 해제*/}
+  header .gnb ul li a, header i.fas{color: var(--f_color1) !important;}
+
+fieldset{
+  background-color: #eee;
+  border: none;
+  width: 500px; height: 420px;
+  margin: 200px auto;
+}
+legend{display: none;}
+fieldset p:nth-child(3) label,
+fieldset p:nth-child(4) label{display: none;}
+
+fieldset img{margin: 30px 38%;}
+fieldset p label, 
+fieldset > p:last-child a{font-size: 12px;}
+fieldset > p{margin: 10px 18%;}
+fieldset > p:last-child a{
+  color: #333; text-decoration: none; padding-right: 20px; border-right:  1px solid #333; margin: 7px;}
+fieldset > p:last-child a:last-child{border: none;}
+
+#id_txt, #pw_txt, #login_btn{height: 40px; width: 300px; border-radius: 5px;border: none}
+#id_txt{margin-top: 30px;}
+#login_btn{background-color: blue; color: white; margin-top: 30px;}
+
+</style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <!-- 로고 -->
+    <h1>
+      <a href="index.html" title="홈으로 바로가기">
+      <img src="./images/logo-casper_black.png" alt="캐스퍼 로고">
+      </a>
+    </h1>
+
+  <!-- 네비게이션 -->
+  <nav class="gnb">
+    <ul>
+      <li><a href="#" title="소개">소개</a></li>
+      <li><a href="#" title="체험">체험</a></li>
+      <li><a href="#" title="이벤트">이벤트</a></li>
+      <li><a href="#" title="구매">구매</a></li>
+      <li><a href="#" title="고객지원">고객지원</a></li>
+    </ul>
+  </nav>
+
+  <!-- 아이콘 -->
+  <a href="./login.html" title="로그인 화면으로 가기"><i class="fas fa-user" title="로그인/회원가입"></i></a>
+  <a href="#" title="로그인 화면으로 가기"><i class="fas fa-bell" title="알람"></i></a>
+  </header>
+
+<!-- 원형네비게이션 -->
+<nav id="m_navi">
+  <ul>
+    <li><span>1</span><a href="#" title="소개">소개</a></li>
+    <li><span>2</span><a href="#" title="체험">체험</a></li>
+    <li><span>3</span><a href="#" title="이벤트">이벤트</a></li>
+    <li><span>4</span><a href="#" title="구매">구매</a></li>
+    <li><span>5</span><a href="#" title="고객지원">고객지원</a></li>
+  </ul>
+</nav>
+
+<main>
+  <form name="login">
+    <fieldset>
+      <legend>로그인 폼</legend>
+      <img src="./images/logo-casper_black.png" alt="캐스퍼 로고">
+      <p>
+        <label for="id_txt">ID : </label>
+        <input type="text" maxlength="16" id="id_txt" name="id_txt" placeholder="  아이디를 입력하세요" autocomplete="off">
+      </p>
+      <p>
+        <label for="pw_txt">PASSWORD : </label>
+        <input type="text" maxlength="16" id="pw_txt" name="pw_txt" placeholder="  비밀번호를 입력하세요" autocomplete="off">
+      </p>
+      <p>
+        <input type="checkbox" id="id_save"><label for="id_save">아이디 저장</label>
+      </p>
+      <p>
+        <input type="submit" value="로그인" id="login_btn">
+      </p>
+      <p>
+        <a href="#" title="아이디 찾기">아이디 찾기</a>
+        <a href="#" title="비밀번호 찾기">비밀번호 찾기</a>
+        <a href="#" title="회원가입">회원가입</a>
+      </p>
+    </fieldset>
+  </form>
+  <!-- 제이쿼리 --><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      let key = getCookie('idChk'); //쿠키 이름 저장
+      
+      if(key!=""){ //만약 key 변수에 값이 있다면
+       $('#id_txt').val(key); //id 값을 저장
+      }
+      
+      if($('#id_txt').val() !=""){ //만약 id 값이 있다면
+        $('#id_save').attr('checked',true); //체크 박스에 체크를 해둔다
+      }
+
+      $('#id_save').change(function(){ //체크박스의 상태가 변경되면 아래를 시행해라
+        if($('#id_save').is(':checked')){ //체크박스에 체크 된 경우
+          setCookie('idChk',$('#id_txt').val(), 7); //쿠키를 생성하고
+        }else{ // 그렇지 않으면
+          deleteCookie('idChk'); //쿠키를 삭제한다.
+        }
+      });
+
+      $('#id_txt').keyup(function(){ //체크박스에 키를 누를 때
+        if($('#id_save').is(':checked')){ //체크 박스에 치크가 된 경우라면
+          setCookie('idChk',$('#id_txt').val(),7); //쿠키를 생성한다
+        }
+      });
+      
+
+    });
+
+    // 자바스크립트 쿠키 (이건 우리가 작성하는게 아님)
+    function setCookie(cookieName, value, exdays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+    }
+    
+    function deleteCookie(cookieName){
+      var expireDate = new Date();
+      expireDate.setDate(expireDate.getDate() - 1);
+      document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+    }
+      
+    function getCookie(cookieName) {
+      cookieName = cookieName + '=';
+      var cookieData = document.cookie;
+      var start = cookieData.indexOf(cookieName);
+      var cookieValue = '';
+      if(start != -1){
+        start += cookieName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cookieValue = cookieData.substring(start, end);
+      }
+      return unescape(cookieValue);
+    }
+
+  </script>
+</main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="f_inner">
+      <h2>
+        <a href="casper_index.html" title="메인페이지로 바로가기">
+          <img src="./images/logo-hyundai.a9ebdc6.png" alt="하단 로고">
+        </a>
+      </h2>
+      <nav class="f_lnb">
+        <ul>
+          <li><a href="#" title="이용약관">이용약관</a></li>
+          <li><a href="#" title="개인정보 처리방침">개인정보 처리방침</a></li>
+          <li><a href="#" title="저작권안내">저작권안내</a></li>
+          <li><a href="#" title="공등인증서 안내">공등인증서 안내</a></li>
+          <li><a href="#" title="현대자동차 홈페이지">현대자동차 홈페이지</a></li>
+        </ul>
+      </nav>
+      <address>
+        <dl>
+          <dt>사업자 등록번호 : </dt>
+          <dd>010-000-00000</dd>
+          <dt>통신판매업신고번호</dt>
+          <dd>2022-012345</dd>
+          <dt>대표이사 : </dt>
+          <dd>장재훈</dd>
+          <dt>주소 : </dt>
+          <dd>서울시 서초구 헌흥로 12</dd>
+          <dt>호스팅 서비스 제공 : </dt>
+          <dd>현재오토에버(주)</dd>
+        </dl>
+        <p>COPYRIGHT &copy; 2023 HYUNDAI MOTOR COMPANY, ALL RIGHTS RESERVED.</p>
+      </address>
+    </div>
+  </footer>
+
+  <!-- cookie --> <script src="./script/jquery.cookie.js"></script>
+  <!-- swiper --> <script src="./script/swiper.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      let modal = 
+      ` <!-- 모달창 -->
+        <div class="modal">
+          <div class="modal_inner">
+            <a href="" title="">
+              <img src="./images/modal_img.jpg" alt="캐스퍼 주유비 1년간 할인 배너">
+            </a>
+            <p>
+              <input type="checkbox" id="today_close"><label for="today_close" class="today_close_label">일주일 동안 열지 않음</label>
+              <input type="button" id="close" value="닫기">
+            </p>
+          </div>
+        </div>`;
+
+      $('body').append(modal); 
+      let today_close = $('#today_close'); 
+      if($.cookie('popup')=='none'){$('.modal').hide();}; 
+
+      function close_popup(){ 
+        if(today_close.is(':checked')){ 
+          $.cookie('popup','none',{expires:7,path:'/'})
+          $('.modal').hide();
+        }else{
+          $('.modal').hide(); 
+        };};
+
+      $('#close, #today_close').click(function(){close_popup();}); 
+
+      var swiper = new Swiper('.top3',{
+      autoplay:{
+        delay:3000,
+        disableOnInteraction: false,
+      },
+      loop:true, 
+      navigation:{
+        nextEl:".top3 .swiper-button-next",
+        prevEl:".top3 .swiper-button-prev",
+      },
+      pagination:{
+        el:'.swiper-pagination',
+        clickable:true, //컨트롤 버튼 클릭 가능하게
+      }      
+    });
+
+    var swiper2 = new Swiper('.event',{
+      autoplay:{
+        delay:3000,
+        disableOnInteraction: false,
+      },
+      loop:true, 
+      navigation:{
+        nextEl:".event .swiper-button-next",
+        prevEl:".event .swiper-button-prev",
+      },
+      pagination:{
+        el:'.event .swiper-pagination',
+        clickable:true, //컨트롤 버튼 클릭 가능하게
+      }
+    });
+
+
+    });
+
+  </script>
+</body>
+</html>

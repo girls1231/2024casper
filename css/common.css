@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+/* common.css - 헤더, 푸터 */
+
+/* 헤더 */
+header{
+  position: absolute; z-index: 1000;/*헤더 고정*/
+  width: 100%; height: 70px;}
+header h1{  padding: 24px 0 0 2%;}
+
+.gnb{
+  width: 600px; 
+  margin: -24px auto 0 auto; /*gnb 위치 올리기*/}
+.gnb >ul{  display: flex; justify-content: space-around;}
+.gnb > ul >li{}
+.gnb > ul >li >a{
+  color: var(--m_bg_color);
+  font-size: 1.2rem;
+}
+.gnb > ul > li> a:hover{
+  text-decoration: underline;
+}
+header > a i.fas{
+  color: var(--m_bg_color);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 25px;
+  cursor: pointer;
+}
+
+.fa-user{right: 5%;}
+.fa-bell{right: 2.5%;}
+
+/* 원형네비게이션 */
+#m_navi{
+  position: fixed; top: 40%; right: 20px;
+  z-index: 1000;
+  width: 10px; height: 160px;
+}
+#m_navi >ul >li{
+  width: 40px; height: 40px;
+  border-radius: 40px;
+  line-height: 40px;
+  transition: 0.5s; /* 시간속성*/
+  background-color: rgb(42, 182, 241);
+  margin-bottom: 5px;
+  transform: translateX(-100%); /*끝으로 옮기기*/
+  overflow: hidden; /*글자 숨기기*/
+}
+
+#m_navi >ul >li:hover{width: 200px;}
+#m_navi >ul >li >span{
+  display: inline-block; width: 40px; height: 40px;
+  border-radius: 50%;  background-color: #062938;
+  color:var(--m_bg_color);  font-size: var(--f_size2);  text-align: center;  font-weight: bold;}
+#m_navi >ul >li:hover >span{  background-color: var(--s_color01);}
+#m_navi >ul >li >a{  color: var(--m_bg_color);  font-size: var(--f_size2);  padding:0 50px 0 40px;}
+
+
+
+/* 푸터 */
+footer{background-color:#1c1a1b;color:var(--m_bg_color);  padding: 40px 0; height: 100px; }
+
+.f_inner{width: 1200px;  margin: 0 auto;}
+.f_inner h2{float: left;  padding-top: 10px; width: 150px; height: 30px;}
+
+.f_lnb{float: left;}
+
+.f_lnb a {color: #ccc; padding: 0px 20px; border-right: 1px solid #ccc;}
+.f_lnb li:last-child a{border: none; }
+.f_lnb li:nth-child(2) a{ font-weight: 500; color: var(--m_bg_color);}
+.f_lnb >ul{ display: flex; padding-top: 15px;}
+
+address{clear: left; line-height: 30px; text-transform: uppercase; padding-left: 170px;}
+address dt, address dd{display: inline-block;}
