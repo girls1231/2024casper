@@ -21,12 +21,21 @@
   header{position: static; /*포지션 해제*/}
   header .gnb ul li a, header i.fas{color: var(--f_color1) !important;}
 
-  .sub_top{background-image: url(./images/bg-main-test-driving.125a037.jpg);height: 300px;}
+  .sub_top{background-image: url(./images/bg-main-test-driving.125a037.jpg);height: 300px; }
   .sub_top nav{color: white; }
+  .sub_top .sec_title2{color: white !important; text-align: center;padding-top: 80px;}
+  .sub_top .p01{color: white !important; text-align: center;}
 
-  fieldset{background-color: #eee;}
-  .online_reseve{}
-  
+  .online_reseve{height: 700px}
+  .online_reseve legend{text-indent: -99999999999999px;}
+  .online_reseve h2{text-align: center; padding: 80px 0 40px 0;}
+  .online_reseve fieldset{width: fit-content; margin: 0 auto; position: relative;}
+  .online_reseve p{padding: 10px; font-size: 16px;}
+  .online_reseve input[type="text"], .online_reseve select{width: 200px; line-height: 30px; height: 30px; border: 1px solid #ececec;  }
+  .online_reseve p label{display: inline-block; width: 150px; line-height: 30px;}
+  .online_reseve p:nth-of-type(3) label{width:fit-content;text-indent: 50px;}
+  .test_drive_btn1,.test_drive_btn2{background-color: rgb(41, 41, 211); color: white; border: none; padding: 10px 50px; border-radius: 5px; margin-top: 20px;}
+  .test_drive_btn2{position: absolute; right: 10px; bottom: 30px;}
 </style>
 </head>
 <body>
@@ -70,8 +79,8 @@
     <!--sub top-->
     <section class="sub_top">
       <nav>홈 &gt; 체험 &gt; <b>시승신청<b></nav>
-      <h2>시승신청</h2>
-      <p>캐스퍼가 제공하는 편리한 시승 서비스를 이용해보세요</p>
+      <h2 class="sec_title2">시승신청</h2>
+      <p class="p01">캐스퍼가 제공하는 편리한 시승 서비스를 이용해보세요</p>
     </section>
 
     <!-- 시승신청 온라인 예약 -->
@@ -82,10 +91,10 @@
           <legend>시승신청 온라인 예약</legend>
           <p><label>고객명 : </label><input type="text" name="name" required></p>
           <p><label>휴대폰 : </label><input type="text" name="phone" required></p>
-          <p>SMS수신여부 : 
+          <p>SMS수신여부 :   
             <label for="sms01">수신</label>
             <input type="radio" name="sms" id="sms01" value="Y">
-            <label for="sms01">수신안함</label>
+            <label for="sms02">수신안함</label>
             <input type="radio" name="sms" id="sms02" value="N"></p>
           <p>
             <label>전시장 선택 : </label>
@@ -109,8 +118,8 @@
           </p>
           <p><label>보유차종 : </label><input type="text" name="my_car" required></p>
           <p><label>시승희망일 : </label><input type="text" name="e_date" required></p>
-          <p><input type="submit" value="예약하기"></p>
-          <p><input type="reset" value="취소하기"></p>
+          <p><input type="submit" value="예약하기" class="test_drive_btn1"></p>
+          <p><input type="reset" value="취소하기" class="test_drive_btn2"></p>
         </fieldset>
       </form>
     </section>
